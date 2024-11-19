@@ -11,6 +11,7 @@
 #ifdef _OPENMP
 #include <omp.h>
 #endif
+#include <iostream>
 
 int main(int argc, char** argv)
 {
@@ -35,7 +36,7 @@ int main(int argc, char** argv)
     fftw_plan_with_nthreads(omp_get_max_threads());
 #endif
     PARAM.set_pal_param(my_rank, nproc, nthread_per_proc);
-
+    
     /*
     main program for doing electronic structure calculations.
     */
@@ -51,6 +52,11 @@ int main(int argc, char** argv)
 #ifdef _OPENMP
     fftw_cleanup_threads();
 #endif
+    if(true)
+        std::cout<<true<<std::endl;
+
+    for(int i=0; i<10; ++i)
+        std::cout<<i<<std::endl;
 
     return 0;
 }
